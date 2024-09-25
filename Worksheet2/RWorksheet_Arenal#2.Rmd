@@ -1,0 +1,15 @@
+---
+title: "RWorksheet_Arenal#2"
+author: "Jo Carlo Arenal"
+date: "2024-09-25"
+output: html_document
+---
+sequence_vector <- -5:5
+
+sequence_vector
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
