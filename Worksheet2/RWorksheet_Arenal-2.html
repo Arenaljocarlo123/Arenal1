@@ -569,6 +569,43 @@ celebrity_df</code></pre>
 ## 23            23             Jay Leno  32
 ## 24            24          Celine Dion  40
 ## 25            25          Kobe Bryant  31</code></pre>
+<pre class="r"><code># 9
+
+# 10
+
+# a
+vegetables &lt;- c(&quot;Carrot&quot;, &quot;Broccoli&quot;, &quot;Spinach&quot;, &quot;Potato&quot;, &quot;Tomato&quot;,
+                &quot;Cabbage&quot;, &quot;Bell Pepper&quot;, &quot;Zucchini&quot;, &quot;Onion&quot;, &quot;Eggplant&quot;)
+
+vegetables</code></pre>
+<pre><code>##  [1] &quot;Carrot&quot;      &quot;Broccoli&quot;    &quot;Spinach&quot;     &quot;Potato&quot;      &quot;Tomato&quot;     
+##  [6] &quot;Cabbage&quot;     &quot;Bell Pepper&quot; &quot;Zucchini&quot;    &quot;Onion&quot;       &quot;Eggplant&quot;</code></pre>
+<pre class="r"><code># b
+vegetables &lt;- c(vegetables, &quot;Cauliflower&quot;, &quot;Radish&quot;)
+
+vegetables</code></pre>
+<pre><code>##  [1] &quot;Carrot&quot;      &quot;Broccoli&quot;    &quot;Spinach&quot;     &quot;Potato&quot;      &quot;Tomato&quot;     
+##  [6] &quot;Cabbage&quot;     &quot;Bell Pepper&quot; &quot;Zucchini&quot;    &quot;Onion&quot;       &quot;Eggplant&quot;   
+## [11] &quot;Cauliflower&quot; &quot;Radish&quot;</code></pre>
+<pre class="r"><code># c
+vegetables &lt;- append(vegetables, c(&quot;Asparagus&quot;, &quot;Kale&quot;, &quot;Lettuce&quot;, &quot;Mushroom&quot;), after = 5)
+
+vegetables</code></pre>
+<pre><code>##  [1] &quot;Carrot&quot;      &quot;Broccoli&quot;    &quot;Spinach&quot;     &quot;Potato&quot;      &quot;Tomato&quot;     
+##  [6] &quot;Asparagus&quot;   &quot;Kale&quot;        &quot;Lettuce&quot;     &quot;Mushroom&quot;    &quot;Cabbage&quot;    
+## [11] &quot;Bell Pepper&quot; &quot;Zucchini&quot;    &quot;Onion&quot;       &quot;Eggplant&quot;    &quot;Cauliflower&quot;
+## [16] &quot;Radish&quot;</code></pre>
+<pre class="r"><code>length(vegetables)</code></pre>
+<pre><code>## [1] 16</code></pre>
+<pre class="r"><code>#d
+vegetables &lt;- vegetables[-c(5, 10, 15)]
+
+vegetables</code></pre>
+<pre><code>##  [1] &quot;Carrot&quot;      &quot;Broccoli&quot;    &quot;Spinach&quot;     &quot;Potato&quot;      &quot;Asparagus&quot;  
+##  [6] &quot;Kale&quot;        &quot;Lettuce&quot;     &quot;Mushroom&quot;    &quot;Bell Pepper&quot; &quot;Zucchini&quot;   
+## [11] &quot;Onion&quot;       &quot;Eggplant&quot;    &quot;Radish&quot;</code></pre>
+<pre class="r"><code>length(vegetables)</code></pre>
+<pre><code>## [1] 13</code></pre>
 
 
 

@@ -161,5 +161,36 @@ celebrity_df[celebrity_df$Celebrity_name == "J.K. Rowling", "Pay"] <- 90
 
 celebrity_df
 
+# 9
+
+# 10
+
+# a
+vegetables <- c("Carrot", "Broccoli", "Spinach", "Potato", "Tomato",
+                "Cabbage", "Bell Pepper", "Zucchini", "Onion", "Eggplant")
+
+vegetables
+
+# b
+vegetables <- c(vegetables, "Cauliflower", "Radish")
+
+vegetables
+
+# c
+vegetables <- append(vegetables, c("Asparagus", "Kale", "Lettuce", "Mushroom"), after = 5)
+
+vegetables
+
+length(vegetables)
+
+#d
+vegetables <- vegetables[-c(5, 10, 15)]
+
+vegetables
+
+length(vegetables)
+
+
+
 ```
 
