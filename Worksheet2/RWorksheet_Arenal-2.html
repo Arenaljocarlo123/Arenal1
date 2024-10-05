@@ -570,9 +570,45 @@ celebrity_df</code></pre>
 ## 24            24          Celine Dion  40
 ## 25            25          Kobe Bryant  31</code></pre>
 <pre class="r"><code># 9
+# a
+library(openxlsx)
+hotels_vienna &lt;- read.xlsx(&quot;/cloud/project/hotels-vienna.xlsx&quot;)
+head(hotels_vienna)</code></pre>
+<pre><code>##   country city_actual rating_count center1label center2label neighbourhood
+## 1 Austria      Vienna           36  City centre    Donauturm   17. Hernals
+## 2 Austria      Vienna          189  City centre    Donauturm   17. Hernals
+## 3 Austria      Vienna           53  City centre    Donauturm    Alsergrund
+## 4 Austria      Vienna           55  City centre    Donauturm    Alsergrund
+## 5 Austria      Vienna           33  City centre    Donauturm    Alsergrund
+## 6 Austria      Vienna           25  City centre    Donauturm    Alsergrund
+##   price   city stars ratingta ratingta_count scarce_room hotel_id offer
+## 1    81 Vienna     4      4.5            216           1    21894     1
+## 2    81 Vienna     4      3.5            708           0    21897     1
+## 3    85 Vienna     4      3.5            629           0    21901     1
+## 4    83 Vienna     3      4.0             52           0    21902     1
+## 5    82 Vienna     4      3.5            219           1    21903     1
+## 6   229 Vienna     5      4.5             27           1    21904     1
+##      offer_cat year month weekend holiday distance distance_alter
+## 1 15-50% offer 2017    11       0       0      2.7            4.4
+## 2  1-15% offer 2017    11       0       0      1.7            3.8
+## 3 15-50% offer 2017    11       0       0      1.4            2.5
+## 4 15-50% offer 2017    11       0       0      1.7            2.5
+## 5 15-50% offer 2017    11       0       0      1.2            2.8
+## 6  1-15% offer 2017    11       0       0      0.9            3.0
+##   accommodation_type nnights rating
+## 1          Apartment       1    4.4
+## 2              Hotel       1    3.9
+## 3              Hotel       1    3.7
+## 4              Hotel       1    4.0
+## 5              Hotel       1    3.9
+## 6          Apartment       1    4.8</code></pre>
+<pre class="r"><code># b
+dim(hotels_vienna)</code></pre>
+<pre><code>## [1] 428  24</code></pre>
+<pre class="r"><code># c
+
 
 # 10
-
 # a
 vegetables &lt;- c(&quot;Carrot&quot;, &quot;Broccoli&quot;, &quot;Spinach&quot;, &quot;Potato&quot;, &quot;Tomato&quot;,
                 &quot;Cabbage&quot;, &quot;Bell Pepper&quot;, &quot;Zucchini&quot;, &quot;Onion&quot;, &quot;Eggplant&quot;)

@@ -2,7 +2,9 @@
 title: "RWorksheet_Arenal#2"
 author: "Jo Carlo Arenal"
 date: "2024-09-25"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -54,6 +56,7 @@ second_fourth_elements
 ages_excluding_4th_12th <- ages[-c(4, 12)]
 
 ages_excluding_4th_12th
+
 
 # 4
 # a
@@ -162,9 +165,22 @@ celebrity_df[celebrity_df$Celebrity_name == "J.K. Rowling", "Pay"] <- 90
 celebrity_df
 
 # 9
+# a
+library(readxl)
+hotels_vienna <- read_excel("/cloud/project/hotels-vienna.xlsx")
+hotels_vienna
+
+# b
+dim(hotels_vienna)
+
+# c
+
+# d
+
+# e
+
 
 # 10
-
 # a
 vegetables <- c("Carrot", "Broccoli", "Spinach", "Potato", "Tomato",
                 "Cabbage", "Bell Pepper", "Zucchini", "Onion", "Eggplant")
@@ -189,8 +205,6 @@ vegetables <- vegetables[-c(5, 10, 15)]
 vegetables
 
 length(vegetables)
-
-
 
 ```
 
