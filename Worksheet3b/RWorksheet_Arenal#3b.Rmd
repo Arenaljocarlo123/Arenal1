@@ -1,0 +1,117 @@
+---
+title: "RWorksheet_Arenal#3b.Rmd"
+author: "Jo Carlo Arenal"
+date: "2024-10-06"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# 1
+# a
+data <- data.frame(
+  Respondent = 1:20,
+  Sex = c(2, 2, 2, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1, 2, 2, 1, 1, 1, 2, 2),
+  Fathers_Occupation = c(1, 3, 3, 1, 2, 3, 3, 2, 2, 2, 1, 3, 3, 3, 3, 3, 1, 2, 1, 1),
+  Persons_at_Home = c(5, 7, 3, 8, 5, 6, 7, 8, 7, 4, 7, 3, 8, 7, 5, 3, 7, 11, 7, 6),
+  Siblings_at_School = c(6, 4, 3, 2, 2, 5, 6, 3, 4, 2, 4, 3, 7, 5, 3, 4, 3, 3, 3, 2),
+  Types_of_Houses = c(1, 2, 3, 1, 2, 2, 1, 2, 1, 3, 3, 2, 3, 1, 3, 3, 1, 3, 1, 2)
+)
+
+print(data)
+
+# b
+str(data)
+
+summary(data)
+
+# c
+mean_siblings <- mean(data$Siblings_at_School)
+is_mean_five <- mean_siblings == 5
+mean_siblings
+is_mean_five
+
+# d
+first_two_rows <- data[1:2, ]
+print(first_two_rows)
+
+# e
+subset_rows <- data[c(3, 5), c(2, 4)]
+print(subset_rows)
+
+# f
+types_houses <- data$Types_of_Houses
+print(types_houses)
+
+males_farmers <- subset(data, Sex == 1 & Fathers_Occupation == 1)
+print(males_farmers)
+
+# h
+females_with_siblings <- subset(data, Sex == 2 & Siblings_at_School >= 5)
+print(females_with_siblings)
+
+```
+
+```{r}
+# 2
+df <- data.frame(
+  Ints = integer(),
+  Doubles = double(),
+  Characters = character(),
+  Logicals = logical(),
+  Factors = factor(),
+  stringsAsFactors = FALSE
+)
+
+# 2a
+print("Structure of the empty dataframe:")
+str(df)
+
+```
+
+```{r}
+# 3
+# 3a
+data <- read.csv("/cloud/project/HouseholdData.csv")
+
+head(data)
+
+# 3b
+data$Sex <- factor(data$Sex, levels = c("Male", "Female"), labels = c(1, 2))
+
+data$Sex <- as.integer(data$Sex)
+
+head(data)
+
+# 3c
+data$Types.of.houses <- factor(data$Types.of.Houses, 
+                                levels = c("Wood", "Concrete", "Semi-concrete"), 
+                                labels = c(1, 2, 3))
+
+head(data)
+
+str(data)
+
+# 3d
+data$Fathers.Occupation <- factor(data$Fathers.Occupation, 
+                                   levels = c( 1, 2 , 3), 
+                                   labels = c( "Farmer", "Driver", "Others"))
+
+head(data)
+
+str(data)
+
+# 3e
+female_drivers <- data[data$Sex == 2 & data$Fathers.Occupation == 2, ]
+
+print(female_drivers)
+
+# 3f
+siblings_ge_5 <- data[data$Siblings.at.School >= 5, ]
+
+print(siblings_ge_5)
+
+```
