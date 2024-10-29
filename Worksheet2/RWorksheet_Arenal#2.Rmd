@@ -13,21 +13,23 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 # 1
-# a
+# 1a
 sequence_vector <- -5:5
 
 sequence_vector
 
 # The output is a vector containing all integer values from -5 to 5, inclusive. The : operator generates a sequence of numbers, starting from the left operand (-5) and ending at the right operand (5), increasing by 1.
 
-# b
+# 1b
 
 x <- 1:7
 
 x
+```
 
+```{r}
 # 2
-# a
+# 2a
 
 sequence_vector_seq <- seq(1, 3, by = 0.2)
 
@@ -35,7 +37,11 @@ sequence_vector_seq
 
 # The output is a vector that starts at 1 and ends at 3, with increments of 0.2. The seq() function generates a sequence of numbers according to the specified parameters. In this case, it includes all values starting from 1 up to and including 3, stepping by 0.2 each time. This results in a total of 11 values: 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, and 3.0.
 
+```
+
+```{r}
 # 3
+# 3a
 ages <- c(34, 28, 22, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27,
           22, 37, 34, 19, 20, 57, 49, 50, 37, 46, 25, 17, 37,
           43, 53, 41, 51, 35, 24, 33, 41, 53, 40, 18, 44, 38,
@@ -45,21 +51,23 @@ third_element <- ages[3]
 
 third_element
 
-# b
+# 3b
 
 second_fourth_elements <- ages[c(2, 4)]
 
 second_fourth_elements
 
-# c.
+# 3c
 
 ages_excluding_4th_12th <- ages[-c(4, 12)]
 
 ages_excluding_4th_12th
 
+```
 
+```{r}
 # 4
-# a
+# 4a
 
 x <- c("first" = 3, "second" = 0, "third" = 9)
 
@@ -71,12 +79,15 @@ selected_elements
 
 # The output shows a vector that contains only the elements corresponding to the names "first" and "third" from the original vector x. The value for "first" is 3 and the value for "third" is 9. This demonstrates how to access specific elements in a named vector using their names.
 
+```
+
+```{r}
 # 5
-# a
+# 5a
 x[2] <- 0
 x
 
-# b
+# 5b
 
 x <- -3:2
 
@@ -86,8 +97,11 @@ x[2] <- 0
 
 print(x)
 
+```
+
+```{r}
 # 6
-# a
+# 6a
 
 months <- c("Jan", "Feb", "March", "Apr", "May", "June")
 price_per_liter <- c(52.50, 57.25, 60.00, 65.00, 74.25, 54.00)
@@ -99,7 +113,7 @@ diesel_data <- data.frame(Month = months,
 
 print(diesel_data)
 
-# b
+# 6b
 
 expenditure <- price_per_liter * purchase_quantity
 
@@ -107,11 +121,15 @@ average_expenditure <- weighted.mean(expenditure, purchase_quantity)
 
 average_expenditure
 
-# 7
-# a
-# b
-# c
+```
 
+```{r}
+# 7
+# 7a
+
+# 7b
+
+# 7c
 data <- c(length(rivers),      # Number of elements
            sum(rivers),         # Sum of lengths
            mean(rivers),        # Mean of lengths
@@ -122,18 +140,14 @@ data <- c(length(rivers),      # Number of elements
            max(rivers))         # Maximum length
 
 data
+```
 
+```{r}
 # 8
-# a
-
+# 8a
 Power_ranking <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25)
 
-Celebrity_name <- c("Tom Cruise", "Rolling Stones", "Oprah Winfrey", "U2", "Tiger Woods", 
-                    "Steven Spielberg", "Howard Stern", "50 Cent", "Cast of the Sopranos", 
-                    "Dan Brown", "Bruce Springsteen", "Donald Trump", "Muhammad Ali", 
-                    "Paul McCartney", "George Lucas", "Elton John", "David Letterman", 
-                    "Phil Mickelson", "J.K. Rowling", "Bradd Pitt", "Peter Jackson", 
-                    "Dr. Phil McGraw", "Jay Leno", "Celine Dion", "Kobe Bryant")
+Celebrity_name <- c("Tom Cruise", "Rolling Stones", "Oprah Winfrey", "U2", "Tiger Woods", "Steven Spielberg", "Howard Stern", "50 Cent", "Cast of the Sopranos", "Dan Brown", "Bruce Springsteen", "Donald Trump", "Muhammad Ali", "Paul McCartney", "George Lucas", "Elton John", "David Letterman", "Phil Mickelson", "J.K. Rowling", "Bradd Pitt", "Peter Jackson", "Dr. Phil McGraw", "Jay Leno", "Celine Dion", "Kobe Bryant")
 
 Pay <- c(67, 90, 225, 110, 90, 332, 302, 41, 52, 88, 55, 44, 55, 40, 233, 34, 40, 47, 
          75, 25, 39, 45, 32, 40, 31)
@@ -144,15 +158,10 @@ celebrity_df <- data.frame(Power_ranking = Power_ranking,
 
 celebrity_df
 
-# b
+# 8b
 Power_ranking <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25)
 
-Celebrity_name <- c("Tom Cruise", "Rolling Stones", "Oprah Winfrey", "U2", "Tiger Woods", 
-                    "Steven Spielberg", "Howard Stern", "50 Cent", "Cast of the Sopranos", 
-                    "Dan Brown", "Bruce Springsteen", "Donald Trump", "Muhammad Ali", 
-                    "Paul McCartney", "George Lucas", "Elton John", "David Letterman", 
-                    "Phil Mickelson", "J.K. Rowling", "Bradd Pitt", "Peter Jackson", 
-                    "Dr. Phil McGraw", "Jay Leno", "Celine Dion", "Kobe Bryant")
+Celebrity_name <- c("Tom Cruise", "Rolling Stones", "Oprah Winfrey", "U2", "Tiger Woods", "Steven Spielberg", "Howard Stern", "50 Cent", "Cast of the Sopranos", "Dan Brown", "Bruce Springsteen", "Donald Trump", "Muhammad Ali", "Paul McCartney", "George Lucas", "Elton John", "David Letterman", "Phil Mickelson", "J.K. Rowling", "Bradd Pitt", "Peter Jackson", "Dr. Phil McGraw", "Jay Leno", "Celine Dion", "Kobe Bryant")
 
 Pay <- c(67, 90, 225, 110, 90, 332, 302, 41, 52, 88, 55, 44, 55, 40, 233, 34, 40, 47, 
          75, 25, 39, 45, 32, 40, 31)
@@ -164,42 +173,56 @@ celebrity_df[celebrity_df$Celebrity_name == "J.K. Rowling", "Pay"] <- 90
 
 celebrity_df
 
+```
+
+```{r}
 # 9
-# a
+# 9a
 library(readxl)
 hotels_vienna <- read_excel("/cloud/project/hotels-vienna.xlsx")
 hotels_vienna
 
-# b
+# 9b
 dim(hotels_vienna)
 
-# c
+# 9c
+selected_data <- hotels_vienna[, c("country", "neighbourhood", "price", "stars", "accommodation_type", "rating")]
 
-# d
+head(selected_data)
 
-# e
+# 9d
+save(selected_data, file = "new.RData")
 
+# 9e
+load("new.RData")
 
+head(selected_data)
+
+tail(selected_data)
+
+```
+
+```{r}
 # 10
-# a
+# 10a
 vegetables <- c("Carrot", "Broccoli", "Spinach", "Potato", "Tomato",
                 "Cabbage", "Bell Pepper", "Zucchini", "Onion", "Eggplant")
 
 vegetables
 
-# b
+# 10b
 vegetables <- c(vegetables, "Cauliflower", "Radish")
 
 vegetables
 
-# c
+# 10c
 vegetables <- append(vegetables, c("Asparagus", "Kale", "Lettuce", "Mushroom"), after = 5)
 
 vegetables
 
 length(vegetables)
 
-#d
+# 10d
 vegetables <- vegetables[-c(5, 10, 15)]
 
 vegetables
