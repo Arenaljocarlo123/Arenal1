@@ -8,134 +8,113 @@ output: pdf_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 ```{r}
 # 1
-# a
+# 1a
 first_11 <- LETTERS[1:11]
 first_11
 
-```
-```{r}
-# b
+# 1b
 odd_letters <- LETTERS[seq(1, length(LETTERS), by = 2)]
 odd_letters
 
-```
-```{r}
-# c
+# 1c
 vowels <- LETTERS[c(1, 5, 9, 15, 21)]
 vowels
 
-```
-```{r}
-# d
+# 1d
 last_5_lowercase <- letters[22:26]
 last_5_lowercase
 
-```
-```{r}
-# e
+# 1e
 letters_15_to_24 <- letters[15:24]
 letters_15_to_24
 
 ```
+
 ```{r}
 # 2
-# a
+# 2a
 city <- c("Tuguegarao City", "Manila", "Iloilo City", "Tacloban", "Samal Island", "Davao City")
 city
 
-# b
+# 2b
 temp <- c(42, 39, 34, 34, 30, 27)
 temp
 
-# c
+# 2c
 temperature_df <- data.frame(City = city, Temperature = temp)
 temperature_df
 
-# d
+# 2d
 names(temperature_df) <- c("City", "Temperature")
 temperature_df
 
+# 2e
 str(temperature_df)
 
-# f
+# 2f
 row_3_4 <- temperature_df[3:4, ]
 row_3_4
 
-# g
+# 2g
 highest_temp <- temperature_df[which.max(temperature_df$Temperature), ]
 lowest_temp <- temperature_df[which.min(temperature_df$Temperature), ]
 highest_temp
 lowest_temp
 
 ```
+
 ```{r}
 # 3
-# a
+# 3a
 my_matrix <- matrix(c(1:8, 11:14), nrow = 3, ncol = 4)
 my_matrix
 
-```
-```{r}
-# b
+# 3b
 multiplied_matrix <- my_matrix * 2
 multiplied_matrix
 
-```
-```{r}
-# c
+# 3c
 row_2 <- my_matrix[2, ]
 row_2
 
-```
-```{r}
-# d
+# 3d
 subset_columns <- my_matrix[1:2, 3:4]
 subset_columns
 
-```
-```{r}
-# e
+# 3e
 row_3_subset <- my_matrix[3, 2:3]
 row_3_subset
 
-```
-```{r}
-# f
+# 3f
 column_4 <- my_matrix[, 4]
 column_4
 
-```
-```{r}
-# g
+# 3g
 rownames(my_matrix) <- c("isa", "dalawa", "tatlo")
 colnames(my_matrix) <- c("uno", "dos", "tres", "quatro")
 my_matrix
 
-```
-```{r}
-# h
+# 3h
 reshaped_matrix <- matrix(my_matrix, nrow = 6, ncol = 2)
 reshaped_matrix
 
 ```
+
 ```{r}
 # 4
-# a
+# 4a
 numeric_values <- c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1)
 array_3d <- array(rep(numeric_values, 2), dim = c(2, 4, 3))
 array_3d
 
-```
-```{r}
-# b
+# 4b
 dimensions <- dim(array_3d)
 dimensions
 
-```
-```{r}
-# c
+# 4c
 rownames(array_3d) <- letters[1:2]
 colnames(array_3d) <- LETTERS[1:4]
 dimnames(array_3d) <- list(c("1st-Dimensional Array", "2nd-Dimensional Array"), c("A", "B", "C", "D"))
