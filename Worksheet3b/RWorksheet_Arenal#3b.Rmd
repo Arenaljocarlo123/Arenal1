@@ -8,6 +8,7 @@ output: pdf_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 ```{r}
 # 1
 # a
@@ -22,52 +23,38 @@ data <- data.frame(
 
 print(data)
 
-```
-```{r}
 # b
 str(data)
 
 summary(data)
 
-```
-```{r}
 # c
 mean_siblings <- mean(data$Siblings_at_School)
 is_mean_five <- mean_siblings == 5
 mean_siblings
 is_mean_five
 
-```
-```{r}
 # d
 first_two_rows <- data[1:2, ]
 print(first_two_rows)
 
-```
-```{r}
 # e
 subset_rows <- data[c(3, 5), c(2, 4)]
 print(subset_rows)
 
-```
-```{r}
 # f
 types_houses <- data$Types_of_Houses
 print(types_houses)
 
-```
-```{r}
-# g
 males_farmers <- subset(data, Sex == 1 & Fathers_Occupation == 1)
 print(males_farmers)
 
-```
-```{r}
 # h
 females_with_siblings <- subset(data, Sex == 2 & Siblings_at_School >= 5)
 print(females_with_siblings)
 
 ```
+
 ```{r}
 # 2
 df <- data.frame(
@@ -79,29 +66,27 @@ df <- data.frame(
   stringsAsFactors = FALSE
 )
 
-# a
+# 2a
 print("Structure of the empty dataframe:")
 str(df)
 
 ```
+
 ```{r}
 # 3
-# a
+# 3a
 data <- read.csv("/cloud/project/HouseholdData.csv")
 
 head(data)
-```
-```{r}
-# b
+
+# 3b
 data$Sex <- factor(data$Sex, levels = c("Male", "Female"), labels = c(1, 2))
 
 data$Sex <- as.integer(data$Sex)
 
 head(data)
 
-```
-```{r}
-# c
+# 3c
 data$Types.of.houses <- factor(data$Types.of.Houses, 
                                 levels = c("Wood", "Concrete", "Semi-concrete"), 
                                 labels = c(1, 2, 3))
@@ -110,9 +95,7 @@ head(data)
 
 str(data)
 
-```
-```{r}
-# d
+# 3d
 data$Fathers.Occupation <- factor(data$Fathers.Occupation, 
                                    levels = c( 1, 2 , 3), 
                                    labels = c( "Farmer", "Driver", "Others"))
@@ -121,21 +104,14 @@ head(data)
 
 str(data)
 
-```
-```{r}
-# e
+# 3e
 female_drivers <- data[data$Sex == 2 & data$Fathers.Occupation == 2, ]
 
 print(female_drivers)
 
-```
-```{r}
-# f
+# 3f
 siblings_ge_5 <- data[data$Siblings.at.School >= 5, ]
 
 print(siblings_ge_5)
-
-```
-```{r}
 
 ```
