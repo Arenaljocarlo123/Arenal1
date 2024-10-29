@@ -1,0 +1,160 @@
+---
+title: "RWorksheet_Arenal#4a"
+author: "Jo Carlo Arenal"
+date: "2024-10-29"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# 1
+data <- data.frame(
+  Shoe_Size = c(6.5, 9.0, 8.5, 8.5, 8.5, 10.5, 10.0, 9.5, 9.5, 10.0, 13.0, 13.0, 10.5, 10.5, 8.5, 12.0, 10.5, 13.0, 11.5, 8.5, 5.0, 6.5, 7.5, 8.0, 10.5, 11.0, 9.0, 12.0, 13.0),
+  Height = c(66.0, 68.0, 64.5, 65.0, 65.0, 70.0, 70.0, 71.0, 71.0, 72.0, 74.0, 72.0, 65.5, 67.0, 64.0, 74.5, 71.0, 77.0, 72.0, 59.0, 62.0, 72.0, 64.0, 73.0, 67.0, 69.0, 70.0, 69.0, 70.0),
+  Gender = c("F", "F", "F", "F", "F", "F", "M", "M", "M", "M", "M", "M", "F", "M", "F", "M", "M", "M", "M", "F", "M", "M", "M", "F", "M", "M", "M", "M", "M")
+)
+
+#1a
+summary(data)
+
+#1b
+# Subset for females
+females <- subset(data, Gender == "F", select = c(Shoe_Size, Height))
+
+# Subset for males
+males <- subset(data, Gender == "M", select = c(Shoe_Size, Height))
+
+#1c
+mean_shoe_size <- mean(data$Shoe_Size)
+
+mean_height <- mean(data$Height)
+
+mean_shoe_size
+mean_height
+
+#1d
+correlation <- cor(data$Shoe_Size, data$Height)
+correlation
+
+```
+```{r}
+#2
+months_vector <- c("March", "April", "January", "November", "January", "September", "October", "September", "November", "August", "January", "November", "November", "February", "May", "August", "July", "December", "August", "August", "September", "November", "February", "April")
+
+factor_months_vector <- factor(months_vector)
+
+print(factor_months_vector)
+
+#3
+summary(months_vector)
+
+summary(factor_months_vector)
+
+```
+```{r}
+#4
+direction_data <- c(rep("East", 1), rep("West", 4), rep("North", 3))
+
+new_order_data <- factor(direction_data, levels = c("East", "West", "North"))
+
+print(new_order_data)
+
+```
+```{r}
+#5
+
+file_path <- "/cloud/project/import_march.csv"
+
+#5a
+data <- read.table(file_path, header = TRUE, sep = ",")
+
+head(data)
+
+#5b
+View(data)
+
+```
+```{r}
+#6
+search <- function() {
+  chosen_number <- as.numeric(readline(prompt = "Select a number from 1 to 50: "))
+  if (is.na(chosen_number)) {
+    print("Invalid input. Please enter a number.")
+  } else if (chosen_number < 1 || chosen_number > 50) {
+    print("The number selected is beyond the range of 1 to 50")
+  } else if (chosen_number == 20) {
+    print("TRUE")
+  } else {
+    print(chosen_number)
+  }
+}
+
+search()
+
+```
+
+```{r}
+#7
+min_bills <- function(price) {
+  bills <- c(1000, 500, 200, 100, 50)
+  bill_count <- 0
+  if (price %% 50 != 0) {
+    print("Error: Price must be divisible by 50.")
+    return(NULL)
+  }
+  for (bill in bills) {
+    count <- price %/% bill
+    price <- price %% bill
+    bill_count <- bill_count + count
+  }
+   print(paste("Minimum number of bills needed:", bill_count))
+}
+
+min_bills(5100)
+
+```
+```{r}
+#8
+#8a
+grades <- data.frame(
+  Name = c("Annie", "Thea", "Steve", "Hanna"),
+  Grade1 = c(85, 65, 75, 95),
+  Grade2 = c(65, 75, 55, 75),
+  Grade3 = c(85, 90, 80, 100),
+  Grade4 = c(100, 90, 85, 90)
+)
+
+print(grades)
+
+#8b
+grades$Average <- (grades$Grade1 + grades$Grade2 + grades$Grade3 + grades$Grade4) / 4
+
+high_achievers <- grades[grades$Average > 90, ]
+
+for (i in 1:nrow(high_achievers)) {
+  cat(high_achievers$Name[i], "'s average grade this semester is ", high_achievers$Average[i], ".\n", sep = "")
+}
+
+#8c
+test_averages <- colSums(grades[, 2:5]) / nrow(grades)
+
+for (i in 1:length(test_averages)) {
+  if (test_averages[i] < 80) {
+    cat("The", i, "test was difficult.\n")
+  }
+}
+#8d
+
+for (i in 1:nrow(grades)) {
+  student_scores <- unlist(grades[i, 2:5])
+  highest_score <- sort(student_scores, decreasing = TRUE)[1]
+  if (highest_score > 90) {
+    cat(grades$Name[i], "'s highest grade this semester is ", highest_score, ".\n", sep = "")
+  }
+}
+
+```
+
