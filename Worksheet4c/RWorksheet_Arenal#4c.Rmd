@@ -1,0 +1,183 @@
+---
+title: "RWorksheet_Arenal#4c"
+author: "Jo Carlo Arenal"
+date: "2024-11-03"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# 1
+
+# 1a
+mpg_data <- read.csv("/cloud/project/mpg.csv")
+
+# 1b
+categorical_vars <- names(mpg_data)[sapply(mpg_data, is.factor)]
+print(categorical_vars)
+
+# 1c
+continuous_vars <- names(mpg_data)[sapply(mpg_data, is.numeric)]
+print(continuous_vars)
+
+# 2
+# 2a
+library(dplyr)
+manufacturer_models <- mpg_data %>%
+  group_by(manufacturer) %>%
+  summarise(unique_models = n_distinct(model)) %>%
+  arrange(desc(unique_models))
+
+print(manufacturer_models)
+
+# 2b
+library(ggplot2)
+
+ggplot(manufacturer_models, aes(x = reorder(manufacturer, -unique_models), y = unique_models)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  labs(title = "Number of Unique Models per Manufacturer",
+       x = "Manufacturer",
+       y = "Number of Unique Models")
+
+# 3
+# 3a
+ggplot(mpg_data, aes(x = model, y = manufacturer)) +
+  geom_point() +
+  labs(title = "Model vs. Manufacturer")
+
+# 3b
+
+# Observations: This plot may not be particularly informative as it simply shows points for each combination of model and manufacturer without aggregating or providing context. To make it more informative, consider aggregating data by counts or using facets to group by manufacturer.
+
+# 3c
+top_20_mpg <- mpg_data %>% 
+  head(20)
+
+ggplot(top_20_mpg, aes(x = model, y = year)) +
+  geom_point() +
+  labs(title = "Top 20 Models vs. Year")
+
+# 4
+# 4a
+model_counts <- mpg_data %>%
+  group_by(model) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+
+print(model_counts)
+
+# 4b
+top_20_models <- model_counts %>% 
+  top_n(20)
+
+# Bar plot
+ggplot(top_20_models, aes(x = reorder(model, count), y = count)) +
+  geom_bar(stat = "identity", fill = "blue") +
+  labs(title = "Top 20 Models by Number of Cars",
+       x = "Model",
+       y = "Number of Cars") +
+  coord_flip()
+
+# 5
+# 5a
+ggplot(mpg_data, aes(x = cyl, y = displ, color = displ)) +
+  geom_point() +
+  labs(title = "Relationship between No. of Cylinders and Engine Displacement")
+
+# 5b
+ggplot(mpg_data, aes(x = displ, y = hwy, color = cty)) +
+  geom_point() +
+  labs(title = "Relationship between Engine Displacement and Highway MPG")
+
+```
+
+```{r}
+# 6
+# 6a
+library(readr)
+traffic_data <- read_csv("/cloud/project/traffic.csv")
+
+num_observations <- nrow(traffic_data)
+num_variables <- ncol(traffic_data)
+variables <- names(traffic_data)
+
+num_observations
+num_variables
+variables
+
+# 6b
+junction_1_data <- subset(traffic_data, Junction == 1)
+
+junction_2_data <- subset(traffic_data, Junction == 2)
+
+
+# 6c
+library(ggplot2)
+
+traffic_data$DateTime <- as.POSIXct(traffic_data$DateTime, format = "%m/%d/%Y %H:%M")
+
+ggplot(traffic_data, aes(x = DateTime, y = Vehicles, color = as.factor(Junction))) +
+  geom_line() +
+  labs(x = "DateTime", y = "Number of Vehicles", color = "Junction") +
+  ggtitle("Traffic Flow at Different Junctions") +
+  theme_minimal()
+
+
+```
+
+```{r}
+# 7
+# 7a
+library(readxl)
+
+alexa_data <- read_excel("/cloud/project/alexa_file.xlsx")
+
+num_observations <- nrow(alexa_data)
+num_columns <- ncol(alexa_data)
+
+num_observations
+num_columns
+
+# 7b
+library(dplyr)
+
+variation_totals <- alexa_data %>%
+  group_by(variation) %>%
+  summarise(Total = n())
+
+variation_totals
+
+# 7c
+library(ggplot2)
+
+ggplot(variation_totals, aes(x = variation, y = Total, fill = variation)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Variation", y = "Total Count", title = "Total Count of Each Variation") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# 7d
+alexa_data$date <- as.Date(alexa_data$date, format = "%d/%m/%Y")
+
+ggplot(alexa_data, aes(x = date, y = feedback)) +
+  geom_line(color = "blue") +
+  labs(x = "Date", y = "Number of Verified Reviews", title = "Trend of Verified Reviews Over Time") +
+  theme_minimal()
+
+# 7e
+variation_ratings <- alexa_data %>%
+  group_by(variation) %>%
+  summarise(rating = mean(rating, na.rm = TRUE))
+
+ggplot(variation_ratings, aes(x = variation, y = rating, fill = variation)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Variation", y = "Average Rating", title = "Average Rating of Each Variation") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
