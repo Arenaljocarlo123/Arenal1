@@ -1,0 +1,230 @@
+---
+title: "RWorksheet_Arenal#4b.Rmd"
+author: "Jo Carlo Arenal"
+date: "2024-11-03"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# 1
+vectorA <- 1:5
+
+matrix_result <- matrix(0, nrow = 5, ncol = 5)
+
+for (i in 1:5) {
+  for (j in 1:5) {
+    matrix_result[i, j] <- abs(i - j)
+  }
+}
+
+print(matrix_result)
+
+```
+
+```{r}
+# 2
+num_rows <- 5
+
+for (i in 1:num_rows) {
+  cat(rep(" * ", i), "\n")
+}
+
+```
+
+```{r}
+# 3
+
+start_num <- as.integer(readline(prompt = "Enter the starting number of the Fibonacci sequence: "))
+
+a <- start_num
+b <- a + 1 
+
+cat(a, "")
+
+repeat {
+  next_num <- a + b
+  
+  if (next_num > 500) break
+  
+  cat(b, "")
+  
+  a <- b
+  b <- next_num
+}
+cat("\n")
+
+```
+
+```{r}
+# 4
+# 4a
+data <- read.csv("/cloud/project/Shoe_Size.csv")
+
+head(data)
+
+# 4b
+female_data <- subset(data, Gender == "F")
+
+male_data <- subset(data, Gender == "M")
+
+num_females <- nrow(female_data)
+num_males <- nrow(male_data)
+
+cat("Number of Females:", num_females, "\n")
+cat("Number of Males:", num_males, "\n")
+
+# 4c
+gender_counts <- table(data$Gender)
+
+barplot(gender_counts, 
+        main = "Number of Males and Females in Dataset", 
+        xlab = "Gender", 
+        ylab = "Count", 
+        col = c("lightblue", "pink"), 
+        legend = c("Male", "Female"))
+
+```
+
+```{r}
+# 5
+# 5a
+expenses <- c(Food = 60, Electricity = 10, Savings = 5, Miscellaneous = 25)
+
+percentages <- round(expenses / sum(expenses) * 100, 1)
+labels <- paste(names(expenses), "-", percentages, "%", sep=" ")
+
+colors <- c("skyblue", "orange", "green", "purple")
+
+pie(expenses, labels = labels, col = colors, main = "Dela Cruz Family Monthly Expenses")
+
+```
+
+```{r}
+# 6
+# 6a
+data(iris)
+str(iris)
+# Describe: 150 obs of 5 variables
+
+# 6b
+means <- colMeans(iris[, 1:4])
+means
+
+# 6c
+species_counts <- table(iris$Species)
+
+colors <- c("blue", "green", "pink")
+
+pie(species_counts, main = "Species Distribution in Iris Dataset", col = colors)
+legend("topright", legend = names(species_counts), fill = colors, title = "Species")
+
+# 6d
+setosa <- subset(iris, Species == "setosa")
+versicolor <- subset(iris, Species == "versicolor")
+virginica <- subset(iris, Species == "virginica")
+
+tail(setosa)
+tail(versicolor)
+tail(virginica)
+
+# 6e
+species_colors <- c("setosa" = "blue", "versicolor" = "green", "virginica" = "red")
+species_pch <- c("setosa" = 16, "versicolor" = 17, "virginica" = 18)
+
+plot(iris$Sepal.Length, iris$Sepal.Width,
+     col = species_colors[iris$Species],
+     pch = species_pch[iris$Species],
+     xlab = "Sepal Length",
+     ylab = "Sepal Width",
+     main = "Iris Dataset",
+     sub = "Sepal width and length")
+
+legend("topright", legend = levels(iris$Species), 
+       col = species_colors, pch = species_pch, title = "Species")
+
+# 6f
+# Interpret: Average measurements indicate typical sepal and petal sizes, while the scatterplot demonstrates how these dimensions differ by species.
+
+```
+
+```{r}
+# 7
+library(readxl)
+alexa_file <- read_excel("/cloud/project/alexa_file.xlsx")
+knitr::include_graphics("/cloud/project/alexa_file.xlsx")
+
+head(alexa_file)
+
+# 7a
+alexa_file$variation <- gsub("Black\\s+Dot", "Black Dot", alexa_file$variation)
+alexa_file$variation <- gsub("Black\\s+Plus", "Black Plus", alexa_file$variation)
+alexa_file$variation <- gsub("Black\\s+Show", "Black Show", alexa_file$variation)
+alexa_file$variation <- gsub("Black\\s+Spot", "Black Spot", alexa_file$variation)
+
+alexa_file$variation <- gsub("White\\s+Dot", "White Dot", alexa_file$variation)
+alexa_file$variation <- gsub("White\\s+Plus", "White Plus", alexa_file$variation)
+alexa_file$variation <- gsub("White\\s+Show", "White Show", alexa_file$variation)
+alexa_file$variation <- gsub("White\\s+Spot", "White Spot", alexa_file$variation)
+
+# 7b
+library(dplyr)
+
+variation_counts <- alexa_file %>%
+  group_by(variation) %>%
+  summarise(Total = n())
+
+variation_counts
+
+save(variation_counts, file = "variations.RData")
+
+# 7c
+colors <- c("red", "green", "blue", "purple", "orange", "cyan", "magenta", "yellow")
+
+barplot(
+  height = variation_counts$Total,
+  names.arg = variation_counts$variation,
+  col = colors,
+  main = "Count of Alexa Variants",
+  ylab = "Total Count",
+  las = 2,
+  cex.names = 0.4 
+)
+# 7d
+black_variation <- subset(variation_counts, grepl("Black", variation))
+white_variation <- subset(variation_counts, grepl("White", variation))
+
+par(mfrow = c(1, 2), mar = c(7, 4, 4, 2) + 0.1)
+
+colors_black <- c("black", "red", "green", "blue")
+colors_white <- c("black", "red", "green", "blue", "cyan")
+
+barplot(
+  height = black_variation$Total,
+  names.arg = black_variation$variation,
+  col = colors_black,
+  main = "Black Variants",
+  xlab = "Total Numbers",
+  ylab = "Variants",
+  las = 1,
+  cex.names = 0.4
+)
+
+barplot(
+  height = white_variation$Total,
+  names.arg = white_variation$variation,
+  col = colors_white,
+  main = "White Variants",
+  xlab = "Total Numbers",
+  ylab = "Variants",
+  las = 1,
+  cex.names = 0.4
+)
+
+
+```
+
+
